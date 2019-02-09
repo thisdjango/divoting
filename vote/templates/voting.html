@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+</head>
+<body>
+    <table>
+        <thead>
+        <tr>
+            <td>ID</td>
+            <td>ID Голосования</td>
+            <td>Текст</td>
+        </tr>
+        </thead>
+        {% for item in variants %}
+        <tbody>
+        <tr>
+            <td>{{ voting_id }}</td>
+            <td>{{ item.id }}</td>
+            <!-- Vote page -->
+            <td><a href="vote/{{ jtem.id }}">{{ jtem.text }}</a></td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>

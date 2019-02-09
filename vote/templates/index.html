@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{{ title }}</title>
+    </head>
+
+    <body>
+     {% include 'menu.html' %}
+        <h1>{{main_header}}</h1>
+        <hr>
+        <p>Добро пожаловать {{ user }}</p>
+        <p>Сейчас (по Гринвичу): {{ current_time }}</p>
+    </body>
+</html>

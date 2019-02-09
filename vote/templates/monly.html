@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <title>{{ title }}</title>
+</head>
+<body>
+    {% include 'menu.html' %}
+    <form action="/monly" method="POST">
+        {% csrf_token %}
+        <p>Название: {{ form.name }}</p>
+        <p>Описание: {{ form.descr }}</p>
+        <div class="container1">
+            {% for o in range %}
+        <button class="add_form_field" onclick="plus(o)">Добавить вариант &nbsp; <span style="font-size:16px; font-weight:bold;">+ </span></button>
+        <div><input type="text" name="mytext[]">{{ form2.text.o }} </div>
+        </div>
+            {%endfor%}
+        <input type="submit" value="Создать">
+</form>
+
+<script>
+       $(document).ready(function() {
+        var max_fields      = 10;
+        var wrapper         = $(".container1");
+        var add_button      = $(".add_form_field");
+
+        var x = 1;
+        $(add_button).click(function(e){
+            e.preventDefault();
+            if(x < max_fields){
+                x++;
+                $(wrapper).append('<div><input type="text" name="mytext[]"/>{{ form2.text.o }} <a href="#" class="delete">Delete</a></div>'); //add input box
+            }
+      else
+      {
+      alert('You Reached the limits')
+      }
+        });
+
+        $(wrapper).on("click",".delete", function(e){
+            e.preventDefault(); $(this).parent('div').remove(); x--;
+        })
+    });
+</script>
+
+</body>
+</html>
