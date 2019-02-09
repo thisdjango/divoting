@@ -1,3 +1,0 @@
-# DiVoting
-
-*some smart descrip*
