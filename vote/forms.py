@@ -7,8 +7,9 @@ class VoteForm(forms.Form):
 
 
 class VariantForm(forms.Form):
-    text1 = forms.CharField(max_length = 50, min_length = 1, required=True)
-    text2 = forms.CharField(max_length = 50, min_length = 1, required=True)
+    voting= forms.IntegerField(max_value=10**10,min_value=1, required=True)
+    text = forms.CharField(max_length = 50, min_length = 1, required=True)
+
 
 class AddUserForm(forms.Form):
     name = forms.CharField(max_length=100, min_length=8, required=True)

@@ -1,25 +1,49 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>{{ title }}</title>
-</head>
-<body>
-    <table>
-        <thead>
-        <tr>
-            <td>ID</td>
-            <td>ID Голосования</td>
-            <td>Текст</td>
-        </tr>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script>import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700");</script>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <title>{{ title }}</title>
+    </head>
+
+    <body>
+    {% include 'menu.html' %}
+    <h1>{{ main_header }}</h1>
+    <h2>Варианты для "{{ user.username }}"</h2>
+    {% if areu %}
+        <form action="/voting/{{ voting_id }}" method="POST">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td><p>Вариант:</p></td>
+                <td>{{ form.text }}</td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Создать"></td>
+            </tr>
+        </table>
+        </form>
+    {% endif %}
+    <table border="0" cellpadding="0" class="table table-striped" cellspacing="10" style="text-align: center">
+        <thead bgcolor="'#ffffff">
+            <tr>
+                <th>ID Голосования</th>
+                <th>ID</th>
+                <th>Текст</th>
+            </tr>
         </thead>
-        {% for item in variants %}
         <tbody>
-        <tr>
-            <td>{{ voting_id }}</td>
-            <td>{{ item.id }}</td>
-            <!-- Vote page -->
-            <td><a href="vote/{{ jtem.id }}">{{ jtem.text }}</a></td>
-        </tr>
+        {% for item in variants %}
+            <tr>
+                <th>{{ voting_id }}</th>
+                <td>{{ item.id }}</td>
+                <!-- Vote page -->
+                <td><a>{{ item.text }}</a></td>
+            </tr>
+        {%endfor%}
         </tbody>
     </table>
 </body>

@@ -23,12 +23,10 @@ from vote import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index_page),
-    path('votings', views.voting_page),
-    path(r'^voting/(?P<id>\d+)/$', views.variant_page, name='voting'),
-    path('plus', views.plus),
+    path('votings/', views.voting_page),
+    path('voting/<int:id>', views.variant_page),
     path('monly', views.monly_page),
     path('login', auth_views.LoginView.as_view()),
     path('logout', auth_views.LogoutView.as_view()),
-    path(r'^voting/(?P<id>\d+)/$', views.profile),
     path('singup', views.create_user)
 ]
